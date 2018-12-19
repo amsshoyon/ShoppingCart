@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
             'moto' => 'We Dream The Future',
             'category' => 'E-commerce',
             'image' => 'logo.png',
+            'email' => 'amsshoyon@gmail.com',
+            'phone' => '01986-114808',
             'location' => 'Location of website',
             'details' =>'Details of website',
             'created_at'=>date('Y-m-d H:i:s'),

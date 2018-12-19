@@ -21,6 +21,8 @@ class CreateAppsTable extends Migration
             $table->string('image')->nullable();
             $table->string('location')->nullable();
             $table->text('details')->nullable();
+            $table->text('phone')->nullable();
+            $table->text('email')->nullable();
             $table->timestamps();
         });
     }

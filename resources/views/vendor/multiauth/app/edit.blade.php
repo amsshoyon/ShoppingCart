@@ -29,7 +29,7 @@
 		</fieldset>
 
 		<fieldset class="form-group">
-			<button type="Update" class="btn btn-success">Update</button>
+			<button type="Update" name="info" class="btn btn-success">Update</button>
 		</fieldset>
 	</form>
 </div>

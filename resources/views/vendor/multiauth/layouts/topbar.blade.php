@@ -177,7 +177,7 @@
                         @else
                         <img src="/images/profile.jpg" class="img-circle" alt="User Image">
                         @endif
-                        <p>
+                        <p class="text-center">
                             {{ auth('admin')->user()->name }} - Admin
                             <small>Member since {{ auth('admin')->user()->created_at }}</small>
                         </p>
@@ -185,15 +185,17 @@
                     <!-- Menu Body -->
                     <li class="user-body">
                         <div class="row">
-                            <div class="col-xs-4 text-center">
-                                <a href="#">Followers</a>
+                            <div class="center text-center">
+                                <a href="/" target="_blank">
+                                    <u><b>Visit Page</b></u>
+                                </a>
                             </div>
-                            <div class="col-xs-4 text-center">
+                            {{-- <div class="col-xs-4 text-center">
                                 <a href="#">Sales</a>
                             </div>
                             <div class="col-xs-4 text-center">
                                 <a href="#">Friends</a>
-                            </div>
+                            </div> --}}
                         </div>
                         <!-- /.row -->
                     </li>

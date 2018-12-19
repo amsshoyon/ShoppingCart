@@ -22,9 +22,10 @@
 		<link rel="stylesheet" type="text/css" href="{{ asset('OneTech/plugins/OwlCarousel2-2.2.1/owl.carousel.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ asset('OneTech/plugins/OwlCarousel2-2.2.1/owl.theme.default.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ asset('OneTech/plugins/OwlCarousel2-2.2.1/animate.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ asset('OneTech/styles/main_styles.css') }}">
 		@if(request()->is('/'))
 		<link rel="stylesheet" type="text/css" href="{{ asset('OneTech/plugins/slick-1.8.0/slick.css') }}">
-		<link rel="stylesheet" type="text/css" href="{{ asset('OneTech/styles/main_styles.css') }}">
+		
 		<link rel="stylesheet" type="text/css" href="{{ asset('OneTech/styles/responsive.css') }}">
 		@elseif(request()->is('product'))
 		<link rel="stylesheet" type="text/css" href="{{ asset('OneTech/styles/product_styles.css') }}">
@@ -80,8 +81,10 @@
 		<script src="{{ asset('OneTech/plugins/parallax-js-master/parallax.min.js') }}"></script>
 		<script src="{{ asset('OneTech/js/shop_custom.js') }}"></script>
 		@elseif(request()->is('blog'))
+		<script src="{{ asset('OneTech/plugins/parallax-js-master/parallax.min.js') }}"></script>
 		<script src="{{ asset('OneTech/js/blog_custom.js') }}"></script>
 		@elseif(request()->is('blog_single'))
+		<script src="{{ asset('OneTech/plugins/parallax-js-master/parallax.min.js') }}"></script>
 		<script src="{{ asset('OneTech/js/blog_single_custom.js') }}"></script>
 		@elseif(request()->is('contact'))
 		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script>

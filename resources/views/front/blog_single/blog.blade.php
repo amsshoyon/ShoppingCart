@@ -1,3 +1,6 @@
+<div class="home" style="margin-top: -20px;">
+	<div class="home_background parallax-window" data-parallax="scroll" data-image-src="/OneTech/images/blog_single_background.jpg" data-speed="0.8"></div>
+</div>
 <!-- Single Blog Post -->
 <div class="single_post">
 	<div class="container">

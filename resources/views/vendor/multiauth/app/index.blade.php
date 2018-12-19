@@ -23,7 +23,7 @@
 			<ul class="nav nav-tabs">
 				<li class="active"><a data-toggle="tab" href="#info">App Info</a></li>
 				<li><a data-toggle="tab" href="#edit">Edit Info</a></li>
-				<li><a data-toggle="tab" href="#settings">App Settings</a></li>
+				<li><a data-toggle="tab" href="#settings">Contact</a></li>
 			</ul>
 			<div class="tab-content">
 				<div id="info" class="tab-pane fade in active">
@@ -33,8 +33,7 @@
 					@include('vendor.multiauth.app.edit')
 				</div>
 				<div id="settings" class="tab-pane fade">
-					<h3>Menu 2</h3>
-					<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+					@include('vendor.multiauth.app.contact')
 				</div>
 			</div>
 		</div>

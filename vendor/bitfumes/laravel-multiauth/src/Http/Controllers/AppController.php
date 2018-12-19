@@ -97,7 +97,7 @@ class AppController extends Controller
             $update->image = $image_name;
 
         }
-        else{
+        elseif($request->has('info')){
 
             $request->validate(['name' => 'required']);
 
@@ -106,6 +106,14 @@ class AppController extends Controller
             $update->moto = $request['moto'];
             $update->location = $request['location'];
             $update->details = $request['details'];
+        }
+        else{
+            $request->validate([
+                'email' => 'email|required',
+                'phone' => 'required|min:10',
+            ]);
+            $update->email = $request['email'];
+            $update->phone = $request['phone'];
         }
 
         $update->save();    
