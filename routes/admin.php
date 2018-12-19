@@ -114,6 +114,37 @@ Route::group([
         Route::patch('/status/{id}', 'ToDoController@status')->name('todo.status');
         Route::delete('/delete/{id}', 'ToDoController@destroy')->name('todo.delete');
     });
+
+    //category
+    Route::group([
+        'prefix'     => 'products',
+    ], function(){ 
+        Route::group([
+            'prefix'     => 'category',
+        ], function(){ 
+            Route::get('/list', 'CategoryController@index')->name('category.list');
+            Route::post('/add', 'CategoryController@store')->name('category.add');
+            Route::post('/update', 'CategoryController@update')->name('category.update');
+            Route::delete('/delete/{id}', 'CategoryController@destroy')->name('category.delete');
+        });
+
+        Route::group([
+            'prefix'     => 'subcategory',
+        ], function(){ 
+            Route::get('/list', 'SubcategoryController@index')->name('subcategory.list');
+            Route::post('/add', 'SubcategoryController@store')->name('subcategory.add');
+            Route::post('/update', 'SubcategoryController@update')->name('subcategory.update');
+            Route::delete('/delete/{id}', 'SubcategoryController@destroy')->name('subcategory.delete');
+        });
+    });
+
+    //users
+    Route::group([
+        'prefix'     => 'users',
+    ], function(){ 
+        Route::get('/list', 'UserController@index')->name('users.list');
+        Route::delete('/delete/{id}', 'UserController@destroy')->name('user.delete');
+    });
         
 
     //error route

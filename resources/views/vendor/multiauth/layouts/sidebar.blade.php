@@ -68,6 +68,11 @@
             @endadmin
             {{-- <li><a href="../../documentation/index.html"><i class="fa fa-book"></i> <span>Documentation</span></a></li> --}}
             <li class="header">LABELS</li>
+            
+            <li class="treeview {{ request()->is('users*') ? 'active' : '' }}">
+                <a href="{{ route('users.list') }}"><i class="fa fa-circle-o"></i> All Users</a>
+            </li>
+
             <li class="treeview {{ request()->is('mailbox*') ? 'active' : '' }}">
                 <a href="#">
                     <i class="fa fa-envelope text-blue"></i>
@@ -109,6 +114,25 @@
                     </li>
                 </ul>
             </li>
+
+            <li class="treeview {{ request()->is('products*') ? 'active' : '' }}">
+                <a href="#">
+                    <i class="fa fa-envelope text-blue"></i>
+                    <span>Products</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="{{ request()->is('products/category*/list') ? 'active' : '' }}">
+                        <a href="{{ route('category.list') }}"><i class="fa fa-circle-o"></i> Categories</a>
+                    </li>
+                    <li class="{{ request()->is('products/subcategory*/list') ? 'active' : '' }}">
+                        <a href="{{ route('subcategory.list') }}"><i class="fa fa-circle-o"></i> Sub-Categories</a>
+                    </li>
+                </ul>
+            </li>
+           
             
             
         </ul>
