@@ -17,7 +17,8 @@ class AppController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('role:super');
+        $this->middleware('auth:admin');
+        $this->middleware('role:super', ['only'=>'trash']);
     }
 
     public function index()

@@ -119,6 +119,11 @@ Route::group([
     Route::group([
         'prefix'     => 'products',
     ], function(){ 
+        Route::get('/list', 'ProductController@index')->name('product.list');
+        Route::post('/add', 'ProductController@store')->name('product.add');
+        Route::post('/update', 'ProductController@update')->name('product.update');
+        Route::delete('/delete/{id}', 'ProductController@destroy')->name('product.delete');
+
         Route::group([
             'prefix'     => 'category',
         ], function(){ 
@@ -136,6 +141,16 @@ Route::group([
             Route::post('/update', 'SubcategoryController@update')->name('subcategory.update');
             Route::delete('/delete/{id}', 'SubcategoryController@destroy')->name('subcategory.delete');
         });
+
+        Route::group([
+            'prefix'     => 'colors',
+        ], function(){ 
+            Route::get('/list', 'ColorController@index')->name('color.list');
+            Route::post('/add', 'ColorController@store')->name('color.add');
+            Route::post('/update', 'ColorController@update')->name('color.update');
+            Route::delete('/delete/{id}', 'ColorController@destroy')->name('color.delete');
+        });
+
     });
 
     //users

@@ -15,19 +15,21 @@ class ProductSeeder extends Seeder
         $faker = Faker::create('en_US');
         foreach (range(1,50) as $index) {
             DB::table('products')->insert([
-                'category_id' => 0,
-                'subcategory_id' => $faker->name,
-                'color_id' => $faker->email,
-                'image_id' => $faker->email,
-                'brand' => $faker->realText(100),
-                'name' =>$faker->realText(500),
-                'cover' =>$faker->realText(500),
-                'quantity' =>$faker->realText(500),
-                'price' =>$faker->realText(500),
+                'category_id' => $faker->shuffle(array(1, 2, 3)),
+                'subcategory_id' => $faker->shuffle(array(1, 2, 3)),
+                'color_id' => $faker->shuffle(array(1, 2)),
+                'image_id' => $faker->shuffle(array(1, 2, 3)),
+                'brand' => $faker->randomElement($array = array ('Nokia','Samsung','HP','Asus')),
+                'model' =>$faker->word,
+                'cover' =>$faker->$faker->imageUrl($width = 640, $height = 480, 'technics'),
+                'quantity' =>$faker->randomDigit,
+                'price' =>$faker->randomFloat($nbMaxDecimals = NULL, $min = 0, $max = NULL),
                 'details' =>$faker->realText(500),
+                'release' =>$faker->date($format = 'Y-m-d', $max = 'now'),
                 'created_at'=>date('Y-m-d H:i:s'),
                 'updated_at'=>date('Y-m-d H:i:s'),
             ]);
         }
+
     }
 }

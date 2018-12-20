@@ -124,11 +124,17 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
+                    <li class="{{ request()->is('products/list*') ? 'active' : '' }}">
+                        <a href="{{ route('product.list') }}"><i class="fa fa-circle-o"></i> All Products</a>
+                    </li>
                     <li class="{{ request()->is('products/category*/list') ? 'active' : '' }}">
                         <a href="{{ route('category.list') }}"><i class="fa fa-circle-o"></i> Categories</a>
                     </li>
                     <li class="{{ request()->is('products/subcategory*/list') ? 'active' : '' }}">
                         <a href="{{ route('subcategory.list') }}"><i class="fa fa-circle-o"></i> Sub-Categories</a>
+                    </li>
+                    <li class="{{ request()->is('products/colors*/list') ? 'active' : '' }}">
+                        <a href="{{ route('color.list') }}"><i class="fa fa-circle-o"></i> Colors</a>
                     </li>
                 </ul>
             </li>

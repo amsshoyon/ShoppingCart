@@ -1,8 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
-
+namespace Bitfumes\Multiauth\Http\Controllers;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+use App\Color;
+use Crypt;
+
 
 class ColorController extends Controller
 {
@@ -11,9 +14,15 @@ class ColorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+    
     public function index()
     {
-        //
+        $colors = Color::get();
+        return view('vendor.multiauth.color.index')->with(compact('colors'));
     }
 
     /**
@@ -34,7 +43,11 @@ class ColorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $store = new Color;
+        $store->name = $request->input('name');
+        $store->code = $request->input('code');
+        $store->save();
+        return back()->with('message', 'Color added successfully');
     }
 
     /**
@@ -66,9 +79,13 @@ class ColorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $update = Color::findOrFail($request->input('id'));
+        $update->name = $request->input('name');
+        $update->code = $request->input('code');
+        $update->update();
+        return back()->with('message','Color has been Updated');
     }
 
     /**
@@ -79,6 +96,9 @@ class ColorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $id = Crypt::decrypt($id);
+        $delete = Color::findOrFail($id);
+        $delete->delete();
+        return back()->with('message', 'Color Deleted');
     }
 }

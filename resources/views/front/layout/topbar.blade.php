@@ -27,22 +27,26 @@
 							</div> --}}
 							<div class="top_bar_user">
 								@if(Auth::user())
-								<div class="user_icon"><img src="/OneTech/images/user.svg" alt=""></div>
-								<div><a href="">{{ Auth::user()->name }}</a></div>
-								<div>
-									<a href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-								</div>
+									@if(Auth::user()->image)
+									<div class="user_icon"><img src="{{ Auth::user()->image }}" alt="" style="border-radius: 50%;width: 100%;"></div>
+									@else
+									<div class="user_icon"><img src="/OneTech/images/user.svg" alt=""></div>
+									@endif
+									<div><a href="">{{ Auth::user()->name }}</a></div>
+									<div>
+										<a href="{{ route('logout') }}"
+	                                       onclick="event.preventDefault();
+	                                                     document.getElementById('logout-form').submit();">
+	                                        {{ __('Logout') }}
+	                                    </a>
+	                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+	                                        @csrf
+	                                    </form>
+									</div>
 								@else
-								<div class="user_icon"><img src="/OneTech/images/user.svg" alt=""></div>
-								<div><a href="{{ route('register') }}">Register</a></div>
-								<div><a href="{{ route('login') }}">Sign in</a></div>
+									<div class="user_icon"><img src="/OneTech/images/user.svg" alt=""></div>
+									<div><a href="{{ route('register') }}">Register</a></div>
+									<div><a href="{{ route('login') }}">Sign in</a></div>
 								@endif
 							</div>
 						</div>
