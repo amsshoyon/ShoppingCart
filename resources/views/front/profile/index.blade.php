@@ -1,4 +1,4 @@
-@extends('multiauth::layouts.app')
+@extends('front.layout.app')
 @section('content')
 <section class="content-header well">
     <h1>
@@ -28,16 +28,16 @@
 			</ul>
 			<div class="tab-content">
 				<div id="info" class="tab-pane fade in active">
-					@include('vendor.multiauth.profile.show')
+					@include('front.profile.show')
 				</div>
 				<div id="edit" class="tab-pane fade">
-					@include('vendor.multiauth.profile.edit')
+					@include('front.profile.edit')
 				</div>
 				<div id="email" class="tab-pane fade">
-					@include('vendor.multiauth.profile.email')
+					@include('front.profile.email')
 				</div>
 				<div id="password" class="tab-pane fade">
-					@include('vendor.multiauth.profile.password')
+					@include('front.profile.password')
 				</div>
 			</div>
 		</div>

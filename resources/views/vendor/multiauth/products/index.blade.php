@@ -1,5 +1,14 @@
 @extends('multiauth::layouts.app')
 @section('content')
+<style type="text/css" media="screen">
+#pic{
+display: none;
+}
+
+.newbtn{
+cursor: pointer;
+}
+</style>
 <section class="content-header well">
     <h1>
     Dashboard
@@ -35,7 +44,7 @@
                         <th>Quantity</th>
                         <th>Price</th>
                         <th>Released At</th>
-                        <th>Action</th>
+                        <th class="pull-right">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -45,7 +54,16 @@
                             {{ $product->id }}
                         </td>
                         <td>
-                            {{ $product->cover }}
+                            <form action="{{ route('product.update') }}" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+                                @csrf
+                                <input type="hidden" name="id" value="{{ $product->id }}">
+                                <label class=newbtn>
+                                    <img src="{{ asset('images/products/'.$product->cover) }}"  alt="Cover" width="45px" height="30px">
+                                    <input name="image" id="pic" type="file" required>
+                                </label>
+                                &nbsp;
+                                <button type="submit" name="img_update"><i class="fa fa-cloud-upload"></i></button>
+                            </form>
                         </td>
                         <td>
                             {{ $product->model }}
@@ -71,7 +89,6 @@
                         <td>
                             {{ $product->release }}
                         </td>
-
                         <td class="pull-right">
                             <form action="{{ route('product.delete',[Crypt::encrypt($product->id)]) }}" method="POST">
                                 @csrf @method('delete')
@@ -98,15 +115,24 @@
                     @endforeach
                 </tbody>
             </table>
+            <div class="pull-left" >
+                
+                <div class="btn-group" >
+                    <span>{{ $products->links() }}</span>
+                </div>
+                @if($products->total() > $products->perPage())
+                <span class="hide-sm">
+                    &nbsp; Showing {{ $products->firstItem() }} - {{ $products->lastItem() }}/{{ $products->total() }}
+                </span>
+                @endif
+                <!-- /.btn-group -->
+            </div>
             
         </div>
         
     </div>
 </div>
-
-
 @include('vendor.multiauth.products.modal')
-
 <script type="text/javascript">
     $(function () {
         $(".edit").click(function () {
@@ -132,5 +158,10 @@
             $(".modal-body #details").val(details);
         })
     });
+
+     //image update
+     $('.newbtn').bind("click" , function () {
+            $('#pic').click();
+     });
 </script>
-@endsection 
+@endsection

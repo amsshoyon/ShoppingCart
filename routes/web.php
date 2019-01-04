@@ -11,10 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('front.home.index');
-});
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/profile', 'UserController@index')->name('user.profile');

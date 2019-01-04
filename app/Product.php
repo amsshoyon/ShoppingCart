@@ -24,4 +24,9 @@ class Product extends Model
     {
         return $this->belongsTo(Color::class);
     }
+
+    public function Offer()
+    {
+        return $this->hasMany(Offer::class);
+    }
 }

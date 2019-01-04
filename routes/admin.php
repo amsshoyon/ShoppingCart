@@ -1,13 +1,7 @@
 <?php
 
 //Front Panel
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/', function () {
-    return view('front.home.index');
-});
 
 Route::get('/product', function () {
     return view('front.product.index');
@@ -125,6 +119,15 @@ Route::group([
         Route::delete('/delete/{id}', 'ProductController@destroy')->name('product.delete');
 
         Route::group([
+            'prefix'     => 'offers',
+        ], function(){ 
+            Route::get('/list', 'OfferController@index')->name('offer.list');
+            Route::post('/add', 'OfferController@store')->name('offer.add');
+            Route::post('/update', 'OfferController@update')->name('offer.update');
+            Route::delete('/delete/{id}', 'OfferController@destroy')->name('offer.delete');
+        });
+
+        Route::group([
             'prefix'     => 'category',
         ], function(){ 
             Route::get('/list', 'CategoryController@index')->name('category.list');
@@ -132,6 +135,7 @@ Route::group([
             Route::post('/update', 'CategoryController@update')->name('category.update');
             Route::delete('/delete/{id}', 'CategoryController@destroy')->name('category.delete');
         });
+
 
         Route::group([
             'prefix'     => 'subcategory',

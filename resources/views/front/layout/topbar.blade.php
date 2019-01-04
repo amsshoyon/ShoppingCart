@@ -32,7 +32,7 @@
 									@else
 									<div class="user_icon"><img src="/OneTech/images/user.svg" alt=""></div>
 									@endif
-									<div><a href="">{{ Auth::user()->name }}</a></div>
+									<div><a href="{{ route('user.profile') }}">{{ Auth::user()->name }}</a></div>
 									<div>
 										<a href="{{ route('logout') }}"
 	                                       onclick="event.preventDefault();

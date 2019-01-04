@@ -25,7 +25,7 @@
         <!-- Bootstrap 3.3.6 -->
         <link rel="stylesheet" href="{{ asset('adminlte/bootstrap/css/bootstrap.min.css') }}">
         <!-- Font Awesome -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="{{ asset('adminlte/plugins/fontawesome/css/font-awesome.min.css') }}">
         <!-- Ionicons -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
         <!-- Theme style -->
@@ -36,6 +36,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
         <script src="{{ asset('adminlte/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" />
 
 
 
@@ -74,12 +75,15 @@
 
         <!-- Bootstrap 3.3.6 -->
         <script src="{{ asset('adminlte/bootstrap/js/bootstrap.min.js') }}"></script>
+        <!-- Slimscroll -->
+        <script src="{{ asset('adminlte/plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
         <!-- FastClick -->
         <script src="{{ asset('adminlte/plugins/fastclick/fastclick.js') }}"></script>
         <!-- AdminLTE App -->
         <script src="{{ asset('adminlte/dist/js/app.min.js') }}"></script>
         <!-- AdminLTE for demo purposes -->
         <script src="{{ asset('adminlte/dist/js/demo.js') }}"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/bootstrap-select.min.js"></script>
 
         <script src="{{ asset('js/admin.js') }}"></script>
 

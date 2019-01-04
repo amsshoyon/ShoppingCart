@@ -24,7 +24,7 @@ class ProductController extends Controller
 
     public function index()
     {
-        $products = Product::with('Category')->orderBy('id', 'DESC')->paginate(30);
+        $products = Product::orderBy('id', 'DESC')->paginate(30);
         $categories = Category::all();
         $subcategories = Subcategory::all();
         $colors = Color::all();
@@ -50,6 +50,19 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $store = new Product;
+
+        if ($request->hasFile('image')) {
+            $request->validate([
+                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            ]);
+
+            $image_name = time().'.'.$request->image->getClientOriginalExtension();
+
+            $path= $request->file('image')->move(public_path('/images/products'), $image_name);
+            $store->cover = $image_name;
+
+        }
+
         $store->model = $request->input('model');
         $store->brand = $request->input('brand');
         $store->category_id = $request->input('category_id');
@@ -59,8 +72,7 @@ class ProductController extends Controller
         $store->price = $request->input('price');
         $store->release = $request->input('release');
         $store->details = $request->input('details');
-        $store->cover = 'image.jpg';
-        $store->save();
+        $store->save(); 
         return back()->with('message', 'Product added successfully');
     }
 
@@ -95,7 +107,44 @@ class ProductController extends Controller
      */
     public function update(Request $request)
     {
-        //
+        $id = $request->input('id');
+        $update=Product::findOrFail($id);
+
+        if ($request->hasFile('image')) {
+            $request->validate([
+                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            ]);
+
+            $image_name = time().'.'.$request->image->getClientOriginalExtension();
+
+            if(isset($update->cover)){
+                if(file_exists(public_path('/images/products/'.$update->cover))){
+            
+                    unlink(public_path("images/products/{$update->cover}"));
+                    
+                }
+            } 
+                
+
+            $path= $request->file('image')->move(public_path('/images/products'), $image_name);
+            $update->cover = $image_name;
+            $update->update();
+            return back()->with('message', 'Updated Product Cover');
+
+        }
+        else{
+            $update->model = $request->input('model');
+            $update->brand = $request->input('brand');
+            $update->category_id = $request->input('category_id');
+            $update->subcategory_id = $request->input('subcategory_id');
+            $update->color_id = $request->input('color_id');
+            $update->quantity = $request->input('quantity');
+            $update->price = $request->input('price');
+            $update->release = $request->input('release');
+            $update->details = $request->input('details');
+            $update->update();  
+            return back()->with('message', 'Updated Product information');
+        }
     }
 
     /**
@@ -106,6 +155,9 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $id = Crypt::decrypt($id);
+        $delete = Product::findOrFail($id);
+        $delete->delete();
+        return back()->with('message', 'Product Deleted');
     }
 }

@@ -69,8 +69,8 @@
             {{-- <li><a href="../../documentation/index.html"><i class="fa fa-book"></i> <span>Documentation</span></a></li> --}}
             <li class="header">LABELS</li>
             
-            <li class="treeview {{ request()->is('users*') ? 'active' : '' }}">
-                <a href="{{ route('users.list') }}"><i class="fa fa-circle-o"></i> All Users</a>
+            <li class="{{ request()->is('users*') ? 'active' : '' }}">
+                <a href="{{ route('users.list') }}"><i class="fa fa-circle-o"></i> <span>All Users </span></a>
             </li>
 
             <li class="treeview {{ request()->is('mailbox*') ? 'active' : '' }}">
@@ -126,6 +126,9 @@
                 <ul class="treeview-menu">
                     <li class="{{ request()->is('products/list*') ? 'active' : '' }}">
                         <a href="{{ route('product.list') }}"><i class="fa fa-circle-o"></i> All Products</a>
+                    </li>
+                    <li class="{{ request()->is('products/offers*') ? 'active' : '' }}">
+                        <a href="{{ route('offer.list') }}"><i class="fa fa-circle-o"></i> Offers</a>
                     </li>
                     <li class="{{ request()->is('products/category*/list') ? 'active' : '' }}">
                         <a href="{{ route('category.list') }}"><i class="fa fa-circle-o"></i> Categories</a>
